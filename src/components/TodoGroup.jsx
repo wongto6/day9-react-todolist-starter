@@ -9,7 +9,7 @@ const TodoGroup = () => {
     return (
         <div>
             {state.map((item, index) => {
-                return item.done? null:<TodoItem key={item.id + index} id={item.id} item={item}/>
+                return <TodoItem key={item.id + index} id={item.id} item={item}/>
 
             })}
         </div>

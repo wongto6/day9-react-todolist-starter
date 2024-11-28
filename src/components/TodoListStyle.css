@@ -1,3 +1,7 @@
 .todo-add {
     margin-top: 20px;
 }
+
+.done-item {
+    text-decoration: line-through;
+}

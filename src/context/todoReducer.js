@@ -5,14 +5,11 @@ export const todoReducer = (state, action) => {
             return [...state, {id: Date.now(), text: action.payload, done: false}]
         }
         case "UPDATE": {
-            const updateTodo = state.at(action.payload)
-            updateTodo.done = true
-            console.log(state)
-            return state
+            return state.map(item => {
+                return item.id === action.payload ? {id: item.id, text: item.text, done: !item.done} : item
+            })
         }
         case "DELETE": {
-            console.log(action.payload)
-            console.log(state.filter(item => item.id !== action.payload))
             return state.filter(item => item.id !== action.payload)
         }
         default:
