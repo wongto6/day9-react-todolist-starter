@@ -26,9 +26,8 @@ const TodoGenerator = () => {
         <div className={'todo-add'}>
             <span>
                 <input onChange={handleInputChange}/>
-                <button onClick={handleAdd}>add</button>
+                <button className="button" onClick={handleAdd}>add</button>
             </span>
-
         </div>
     )
 }
