@@ -6,7 +6,7 @@ import { initialState, todoReducer } from "./context/todoReducer";
 export const TodoContext = createContext();
 
 function App() {
-  const [state, dispatch] = useReducer(todoReducer, initialState);
+  const [state, dispatch] = useReducer(todoReducer, []);
 
   return (
     <div className="App">
