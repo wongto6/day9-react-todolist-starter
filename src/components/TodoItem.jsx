@@ -1,11 +1,16 @@
+import {useContext} from "react";
+import {TodoContext} from "../App";
+
 const TodoItem = (props) => {
 
-    function handleDone() {
+    const {dispatch} = useContext(TodoContext)
 
+    function handleDone() {
+        dispatch({type: "UPDATE", payload: props.id})
     }
 
     function handleRemove() {
-
+        dispatch({type: "DELETE", payload: props.id})
     }
 
     return (
