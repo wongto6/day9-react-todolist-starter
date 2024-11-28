@@ -5,7 +5,7 @@ import {TodoContext} from "../App";
 const TodoGenerator = () => {
 
     const [input, setInput] = useState();
-    const {state, dispatch} = useContext(TodoContext)
+    const {dispatch} = useContext(TodoContext)
 
     function handleAdd() {
         dispatch({type: "ADD", payload: input})

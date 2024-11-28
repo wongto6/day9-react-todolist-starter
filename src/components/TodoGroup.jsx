@@ -4,7 +4,7 @@ import TodoItem from "./TodoItem";
 
 const TodoGroup = () => {
 
-    const {state, dispatch} = useContext(TodoContext)
+    const {state} = useContext(TodoContext)
 
     return (
         <div>
