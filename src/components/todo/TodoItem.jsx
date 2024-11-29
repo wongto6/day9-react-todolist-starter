@@ -2,6 +2,7 @@ import {useContext} from "react";
 import {TodoContext} from "../../App";
 import "./TodoListStyle.css"
 import {ACTION} from "../../context/todoReducer";
+import {createTodoData, deleteTodoData} from "../api/todo";
 
 const TodoItem = (props) => {
 
@@ -12,7 +13,9 @@ const TodoItem = (props) => {
     }
 
     function handleRemove() {
-        dispatch({type: ACTION.DELETE, payload: props.id})
+        deleteTodoData(props.id).then(()=>{
+            dispatch({type: ACTION.DELETE, payload: props.id})
+        }, [])
     }
 
     return (

@@ -14,3 +14,13 @@ export const createTodoData = async(text)=>{
     const response = await http.post("todo/TodoItems",{id:Date.now(), text:text, done:false})
     return response.data
 }
+
+export const deleteTodoData = async(id)=>{
+    const response = await http.delete("todo/TodoItems/" + id)
+    return response.status
+}
+
+export const updateTodoData = async(id)=>{
+    const response = await http.put("todo/TodoItems/" + id)
+    return response.data
+}
