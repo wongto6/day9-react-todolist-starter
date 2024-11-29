@@ -1,7 +1,7 @@
 import {useContext, useState} from "react";
 import './TodoListStyle.css'
-import {TodoContext} from "../App";
-import {ACTION} from "../context/todoReducer";
+import {TodoContext} from "../../App";
+import {ACTION} from "../../context/todoReducer";
 
 const TodoGenerator = () => {
 

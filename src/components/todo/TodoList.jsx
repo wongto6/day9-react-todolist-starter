@@ -1,7 +1,7 @@
 import TodoGroup from "./TodoGroup";
 import TodoGenerator from "./TodoGenerator";
 import {useContext} from "react";
-import {TodoContext} from "../App";
+import {TodoContext} from "../../App";
 
 const TodoList = () => {
 

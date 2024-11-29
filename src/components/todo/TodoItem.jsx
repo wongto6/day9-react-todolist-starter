@@ -1,7 +1,7 @@
 import {useContext} from "react";
-import {TodoContext} from "../App";
+import {TodoContext} from "../../App";
 import "./TodoListStyle.css"
-import {ACTION} from "../context/todoReducer";
+import {ACTION} from "../../context/todoReducer";
 
 const TodoItem = (props) => {
 
