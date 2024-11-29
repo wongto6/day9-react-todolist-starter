@@ -3,7 +3,18 @@
 }
 
 .done-item {
+    width: 250px;
     text-decoration: line-through;
+    text-align: center;
+}
+
+.doing-item {
+    width: 250px;
+    text-align: center;
+}
+
+.add-item {
+    width: 230px;
 }
 
 .title {

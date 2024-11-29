@@ -18,7 +18,7 @@ const TodoItem = (props) => {
         <div>
             <span>
                 {props.item.done ? <input value={"It has be done"} contentEditable={false} onClick={handleDone} className={"done-item"}/> :
-                    <input value={props.item.text} contentEditable={false} onClick={handleDone}/>}
+                    <input value={props.item.text} contentEditable={false} onClick={handleDone} className={"doing-item"}/>}
                 <button onClick={handleRemove}>X</button>
             </span>
         </div>
