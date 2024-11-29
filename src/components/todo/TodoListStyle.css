@@ -50,8 +50,23 @@
     margin-bottom: 4px;
 }
 
-.todo-progress{
+.todo-progress-green{
     margin-top: 2px;
     margin-bottom: 5px;
     width: 50%;
 }
+
+.todo-progress-red{
+    color: red;
+    margin-top: 2px;
+    margin-bottom: 5px;
+    width: 50%;
+}
+
+.todo-progress-green{
+    color: yellow;
+    margin-top: 2px;
+    margin-bottom: 5px;
+    width: 50%;
+}
+
