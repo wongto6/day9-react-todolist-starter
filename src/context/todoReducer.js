@@ -1,7 +1,8 @@
 export const ACTION = {
     ADD:"ADD",
     UPDATE:"UPDATE",
-    DELETE:"DELETE"
+    DELETE:"DELETE",
+    LOAD:"LOAD"
 }
 
 export const todoReducer = (state, action) => {
@@ -17,6 +18,9 @@ export const todoReducer = (state, action) => {
         }
         case ACTION.DELETE: {
             return state.filter(item => item.id !== action.payload)
+        }
+        case ACTION.LOAD:{
+            return action.payload
         }
         default:
             return state

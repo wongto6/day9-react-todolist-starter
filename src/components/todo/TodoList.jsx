@@ -1,23 +1,30 @@
 import TodoGroup from "./TodoGroup";
 import TodoGenerator from "./TodoGenerator";
-import {useContext} from "react";
+import {useContext, useEffect} from "react";
 import {TodoContext} from "../../App";
 import {useNavigate} from "react-router-dom";
+import {getTodoData, todoData} from "../api/todo";
+import {ACTION} from "../../context/todoReducer";
 
 const TodoList = () => {
+    useEffect(() => {
+        getTodoData().then((todos) => {
+            dispatch({type: ACTION.LOAD, payload: todos})
+        })
+    }, []);
 
-    const {state} = useContext(TodoContext)
+    const {state, dispatch} = useContext(TodoContext)
     const navigate = useNavigate()
 
-    function handleNavToCounter(){
+    function handleNavToCounter() {
         navigate("/counter")
     }
 
-    function handleNavToUnknown(){
+    function handleNavToUnknown() {
         navigate("/unknown")
     }
 
-    function handleNavToDoneList(){
+    function handleNavToDoneList() {
         navigate('done')
     }
 
