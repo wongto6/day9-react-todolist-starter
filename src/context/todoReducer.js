@@ -1,15 +1,21 @@
+export const ACTION = {
+    ADD:"ADD",
+    UPDATE:"UPDATE",
+    DELETE:"DELETE"
+}
+
 export const todoReducer = (state, action) => {
 
     switch (action.type) {
-        case "ADD": {
+        case ACTION.ADD: {
             return [...state, {id: Date.now(), text: action.payload, done: false}]
         }
-        case "UPDATE": {
+        case ACTION.UPDATE: {
             return state.map(item => {
                 return item.id === action.payload ? {id: item.id, text: item.text, done: !item.done} : item
             })
         }
-        case "DELETE": {
+        case ACTION.DELETE: {
             return state.filter(item => item.id !== action.payload)
         }
         default:
