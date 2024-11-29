@@ -50,7 +50,7 @@ const TodoList = () => {
                 <div className="bottom-space">
                     <span className="title">Todo List</span>
                 </div>
-                <Progress percent={todoProgress} className={"todo-progress-green"}/>
+                <Progress percent={todoProgress} className={"todo-progress"}/>
                 {state.length > 0 ? null : <span className="top-space">Add the things you need to do today...</span>}
                 <TodoGroup currentPage={currentPage} pageSize={pageSize}/>
                 <TodoGenerator/>

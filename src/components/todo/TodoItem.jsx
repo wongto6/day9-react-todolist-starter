@@ -32,6 +32,10 @@ const TodoItem = (props) => {
         })
     }
 
+    function handleEdit(){
+
+    }
+
     return (
         <div>
             <span>
@@ -40,6 +44,7 @@ const TodoItem = (props) => {
                            readOnly={true}/> :
                     <input value={props.item.text} contentEditable={false} onClick={handleDone} className={"doing-item"}
                            readOnly={true}/>}
+                <button onClick={handleEdit} className={"edit-bt"}>Edit</button>
                 <button onClick={handleRemove}>X</button>
             </span>
         </div>
