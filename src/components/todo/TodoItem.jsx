@@ -4,13 +4,16 @@ import "./TodoListStyle.css"
 import {ACTION} from "../../context/todoReducer";
 import {deleteTodoData, updateTodoData} from "../api/todo";
 import {LoadingOutlined} from "@ant-design/icons";
-import {Spin} from "antd";
+import {Modal, Spin} from "antd";
 
 const TodoItem = (props) => {
 
     const {dispatch} = useContext(TodoContext)
     const [updateLoading, setUpdateLoading] = useState(false)
     const [deleteLoading, setDeleteLoading] = useState(false)
+    const [showModal, setShowModal] = useState(false)
+    const [editInput, setEditInput] = useState("")
+
 
     function handleDone() {
 
@@ -32,13 +35,43 @@ const TodoItem = (props) => {
         })
     }
 
-    function handleEdit(){
+    function handleEdit() {
+        setShowModal(true)
+    }
 
+    function handleEditInput(event) {
+        setEditInput(event.target.value)
+    }
+
+    function submitChange() {
+
+        updateTodoData({id: props.id, text: editInput, done: props.done}).then((todo) => {
+            setUpdateLoading(true)
+            dispatch({type: ACTION.EDIT, payload: todo.id})
+        }, []).finally(() => {
+            setUpdateLoading(false)
+        })
+        setShowModal(false)
+    }
+
+    function handleClose() {
+        setShowModal(false)
+    }
+
+    function handleOpen() {
+        setShowModal(true)
     }
 
     return (
         <div>
             <span>
+                {showModal ? <Modal title="Edit content" open={handleOpen} onOk={submitChange} onCancel={handleClose}>
+                    <input value={editInput} onChange={handleEditInput} className={"input-box"}/>
+                </Modal> : null
+
+                }
+
+
                 {updateLoading || deleteLoading ? <Spin indicator={<LoadingOutlined spin/>}/> : props.item.done ?
                     <input value={"It has be done"} contentEditable={false} onClick={handleDone} className={"done-item"}
                            readOnly={true}/> :
@@ -46,6 +79,7 @@ const TodoItem = (props) => {
                            readOnly={true}/>}
                 <button onClick={handleEdit} className={"edit-bt"}>Edit</button>
                 <button onClick={handleRemove}>X</button>
+
             </span>
         </div>
     )
