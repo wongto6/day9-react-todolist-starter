@@ -52,7 +52,7 @@ const TodoList = () => {
                 <TodoGroup currentPage={currentPage} pageSize={pageSize}/>
                 <TodoGenerator/>
                 <Pagination defaultCurrent={1} pageSize={pageSize} showTotal={false} total={state.length}
-                            onChange={handlePageChange}/>
+                            onChange={handlePageChange} className={"paging"}/>
                 <button onClick={handleNavToCounter} className="nav-button">Navigate to Counter Page</button>
                 <br/>
                 <button onClick={handleNavToDoneList} className="nav-button">Navigate to Done List Page</button>

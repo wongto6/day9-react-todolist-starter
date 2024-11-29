@@ -43,3 +43,9 @@
     color: white;
     padding: 2px;
 }
+
+.paging {
+    margin-top: 2px;
+    margin-left: 30%;
+    margin-bottom: 4px;
+}
