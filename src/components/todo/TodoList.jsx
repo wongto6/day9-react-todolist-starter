@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 import {getTodoData} from "../api/todo";
 import {ACTION} from "../../context/todoReducer";
 import {LoadingOutlined} from '@ant-design/icons';
-import {Flex, Spin} from 'antd';
+import {Flex, Progress, Spin} from 'antd';
 import {Pagination} from 'antd';
 
 const TodoList = () => {
@@ -14,7 +14,7 @@ const TodoList = () => {
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const pageSize = 5
+    const pageSize = 5;
 
     useEffect(() => {
         setLoading(true)
@@ -42,12 +42,15 @@ const TodoList = () => {
         setCurrentPage(page)
     }
 
+    const todoProgress = ((state.filter(item => item.done===true).length/ state.length) * 100).toPrecision(2)
+
     return (
         <div>{
             loading ? <Spin indicator={<LoadingOutlined style={{fontSize: 48}} spin/>}/> : <div>
                 <div className="bottom-space">
                     <span className="title">Todo List</span>
                 </div>
+                <Progress percent={todoProgress} className={"todo-progress"}/>
                 {state.length > 0 ? null : <span className="top-space">Add the things you need to do today...</span>}
                 <TodoGroup currentPage={currentPage} pageSize={pageSize}/>
                 <TodoGenerator/>
