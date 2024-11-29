@@ -11,7 +11,7 @@ export const getTodoData = async () => {
 }
 
 export const createTodoData = async (text) => {
-    const response = await http.post("todo/TodoItems", {id: Date.now(), text: text, done: false})
+    const response = await http.post("todo/TodoItems", {text: text, done: false})
     return response.data
 }
 

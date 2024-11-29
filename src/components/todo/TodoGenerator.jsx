@@ -20,7 +20,8 @@ const TodoGenerator = () => {
 
         createTodoData(trimmedInput).then((todo)=>{
             setLoading(false)
-            dispatch({type: ACTION.ADD, payload: trimmedInput})
+            console.log(todo)
+            dispatch({type: ACTION.ADD, payload: todo})
         }, []).finally(()=>{
             setLoading(false)
         })
