@@ -3,6 +3,8 @@ import {TodoContext} from "../../App";
 import "./TodoListStyle.css"
 import {ACTION} from "../../context/todoReducer";
 import {deleteTodoData, updateTodoData} from "../api/todo";
+import {LoadingOutlined} from "@ant-design/icons";
+import {Spin} from "antd";
 
 const TodoItem = (props) => {
 
@@ -33,7 +35,7 @@ const TodoItem = (props) => {
     return (
         <div>
             <span>
-                {props.item.done ?
+                {updateLoading || deleteLoading ? <Spin indicator={<LoadingOutlined spin/>}/> : props.item.done ?
                     <input value={"It has be done"} contentEditable={false} onClick={handleDone} className={"done-item"}
                            readOnly={true}/> :
                     <input value={props.item.text} contentEditable={false} onClick={handleDone} className={"doing-item"}
