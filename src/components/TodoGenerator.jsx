@@ -19,20 +19,13 @@ const TodoGenerator = () => {
     }
 
     function handleInputChange(event) {
-
-        const inputValue = event.target.value
-
-        if (inputValue.length > 100) {
-            return setInput(inputValue.substring(0, 99))
-        }
-
         setInput(event.target.value)
     }
 
     return (
         <div className={'todo-add'}>
             <span>
-                <input onChange={handleInputChange} className={"add-item"}/>
+                <input onChange={handleInputChange} maxLength={100} className={"add-item"}/>
                 <button className="button" onClick={handleAdd}>add</button>
             </span>
         </div>
