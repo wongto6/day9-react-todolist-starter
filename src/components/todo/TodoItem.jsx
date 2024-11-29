@@ -1,4 +1,4 @@
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {TodoContext} from "../../App";
 import "./TodoListStyle.css"
 import {ACTION} from "../../context/todoReducer";
@@ -7,19 +7,27 @@ import {createTodoData, deleteTodoData, updateTodoData} from "../api/todo";
 const TodoItem = (props) => {
 
     const {dispatch} = useContext(TodoContext)
+    const [updateLoading, setUpdateLoading] = useState(false)
+    const [deleteLoading, setDeleteLoading] = useState(false)
 
     function handleDone() {
 
         updateTodoData(props.item).then((todo)=>{
+            setUpdateLoading(true)
             dispatch({type: ACTION.UPDATE, payload: todo.id})
-        }, [])
+        }, []).finally(()=>{
+            setUpdateLoading(false)
+        })
 
     }
 
     function handleRemove() {
         deleteTodoData(props.id).then(()=>{
+            setDeleteLoading(true)
             dispatch({type: ACTION.DELETE, payload: props.id})
-        }, [])
+        }, []).finally(()=>{
+            setDeleteLoading(false)
+        })
     }
 
     return (

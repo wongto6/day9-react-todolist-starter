@@ -8,6 +8,7 @@ const TodoGenerator = () => {
 
     const [input, setInput] = useState("");
     const {dispatch} = useContext(TodoContext)
+    const [loading, setLoading] = useState(false)
 
     function handleAdd() {
 
@@ -18,8 +19,11 @@ const TodoGenerator = () => {
         }
 
         createTodoData(trimmedInput).then((todo)=>{
+            setLoading(false)
             dispatch({type: ACTION.ADD, payload: trimmedInput})
-        }, [])
+        }, []).finally(()=>{
+            setLoading(false)
+        })
 
     }
 
