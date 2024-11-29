@@ -17,7 +17,7 @@ const DoneList = () => {
     }
 
     function handleNavToTodolist() {
-        navigate("/")
+        navigate("/todolist")
     }
 
     return (

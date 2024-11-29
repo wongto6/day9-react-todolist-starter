@@ -12,7 +12,7 @@ const MultipleCounter = () => {
     const navigate = useNavigate()
 
     function handleNavToTodolist(){
-        navigate("/")
+        navigate("/todolist")
     }
 
     function handleNavToUnknown(){

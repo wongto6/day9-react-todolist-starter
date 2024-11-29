@@ -7,6 +7,8 @@ import {Navigate, useNavigate} from "react-router-dom";
 import MultipleCounter from "./components/counter/MultipleCounter";
 import NotFoundPage from "./components/NotFoundPage";
 import DoneList from "./components/todo/DoneList";
+import HomePage from "./components/HomePage";
+import HelpPage from "./components/HelpPage";
 
 export const TodoContext = createContext();
 
@@ -19,10 +21,13 @@ function App() {
                 <Router>
                     <nav>
                         <Link to={'/'}>Home</Link> |
-                        <Link to={'/done'}>Done-List</Link>
+                        <Link to={'/todolist'}>Todo-List</Link> |
+                        <Link to={'/done'}>Done-List</Link> |
                     </nav>
                     <Routes>
-                        <Route path='/' element={<TodoList/>}/>
+                        <Route path='/' element={<HomePage/>}/>
+                        <Route path='/todolist' element={<TodoList/>}/>
+                        <Route path='/help' element={<HelpPage/>}/>
                         <Route path='/done' element={<DoneList/>}/>
                         <Route path='/counter' element={<MultipleCounter/>}/>
                         <Route path='*' element={<NotFoundPage/>}/>
