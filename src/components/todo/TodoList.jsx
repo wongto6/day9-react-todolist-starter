@@ -7,11 +7,14 @@ import {getTodoData} from "../api/todo";
 import {ACTION} from "../../context/todoReducer";
 import {LoadingOutlined} from '@ant-design/icons';
 import {Flex, Spin} from 'antd';
+import {Pagination} from 'antd';
 
 const TodoList = () => {
     const {state, dispatch} = useContext(TodoContext)
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const pageSize = 5
 
     useEffect(() => {
         setLoading(true)
@@ -35,6 +38,10 @@ const TodoList = () => {
         navigate('done')
     }
 
+    function handlePageChange(page){
+        setCurrentPage(page)
+    }
+
     return (
         <div>{
             loading ? <Spin indicator={<LoadingOutlined style={{fontSize: 48}} spin/>}/> : <div>
@@ -42,8 +49,10 @@ const TodoList = () => {
                     <span className="title">Todo List</span>
                 </div>
                 {state.length > 0 ? null : <span className="top-space">Add the things you need to do today...</span>}
-                <TodoGroup/>
+                <TodoGroup currentPage={currentPage} pageSize={pageSize}/>
                 <TodoGenerator/>
+                <Pagination defaultCurrent={1} pageSize={pageSize} showTotal={false} total={state.length}
+                            onChange={handlePageChange}/>
                 <button onClick={handleNavToCounter} className="nav-button">Navigate to Counter Page</button>
                 <br/>
                 <button onClick={handleNavToDoneList} className="nav-button">Navigate to Done List Page</button>
