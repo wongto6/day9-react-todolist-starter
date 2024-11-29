@@ -2,14 +2,18 @@ import {useContext} from "react";
 import {TodoContext} from "../../App";
 import "./TodoListStyle.css"
 import {ACTION} from "../../context/todoReducer";
-import {createTodoData, deleteTodoData} from "../api/todo";
+import {createTodoData, deleteTodoData, updateTodoData} from "../api/todo";
 
 const TodoItem = (props) => {
 
     const {dispatch} = useContext(TodoContext)
 
     function handleDone() {
-        dispatch({type: ACTION.UPDATE, payload: props.id})
+
+        updateTodoData(props.item).then((todo)=>{
+            dispatch({type: ACTION.ADD, payload: todo.id})
+        }, [])
+
     }
 
     function handleRemove() {
