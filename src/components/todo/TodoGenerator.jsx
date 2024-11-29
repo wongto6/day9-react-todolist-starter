@@ -2,6 +2,7 @@ import {useContext, useState} from "react";
 import './TodoListStyle.css'
 import {TodoContext} from "../../App";
 import {ACTION} from "../../context/todoReducer";
+import {createTodoData} from "../api/todo";
 
 const TodoGenerator = () => {
 
@@ -16,7 +17,10 @@ const TodoGenerator = () => {
             return
         }
 
-        dispatch({type: ACTION.ADD, payload: trimmedInput})
+        createTodoData(trimmedInput).then((todo)=>{
+            dispatch({type: ACTION.ADD, payload: trimmedInput})
+        }, [])
+
     }
 
     function handleInputChange(event) {
