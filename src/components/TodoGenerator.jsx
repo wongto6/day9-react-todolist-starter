@@ -4,11 +4,11 @@ import {TodoContext} from "../App";
 
 const TodoGenerator = () => {
 
-    const [input, setInput] = useState();
+    const [input, setInput] = useState("");
     const {dispatch} = useContext(TodoContext)
 
     function handleAdd() {
-        dispatch({type: "ADD", payload: input})
+        dispatch({type: "ADD", payload: input.trim()})
     }
 
     function handleInputChange(event) {

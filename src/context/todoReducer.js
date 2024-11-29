@@ -3,7 +3,7 @@ export const todoReducer = (state, action) => {
     switch (action.type) {
         case "ADD": {
 
-            if(action.payload === undefined){
+            if(action.payload.length === 0){
                 return state
             }
 
