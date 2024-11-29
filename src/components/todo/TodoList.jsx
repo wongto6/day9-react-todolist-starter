@@ -5,6 +5,8 @@ import {TodoContext} from "../../App";
 import {useNavigate} from "react-router-dom";
 import {getTodoData} from "../api/todo";
 import {ACTION} from "../../context/todoReducer";
+import {LoadingOutlined} from '@ant-design/icons';
+import {Flex, Spin} from 'antd';
 
 const TodoList = () => {
     const {state, dispatch} = useContext(TodoContext)
@@ -34,18 +36,21 @@ const TodoList = () => {
     }
 
     return (
-        <div>
-            <div className="bottom-space">
-                <span className="title">Todo List</span>
+        <div>{
+            loading ? <Spin indicator={<LoadingOutlined style={{fontSize: 48}} spin/>}/> : <div>
+                <div className="bottom-space">
+                    <span className="title">Todo List</span>
+                </div>
+                {state.length > 0 ? null : <span className="top-space">Add the things you need to do today...</span>}
+                <TodoGroup/>
+                <TodoGenerator/>
+                <button onClick={handleNavToCounter} className="nav-button">Navigate to Counter Page</button>
+                <br/>
+                <button onClick={handleNavToDoneList} className="nav-button">Navigate to Done List Page</button>
+                <br/>
+                <button onClick={handleNavToUnknown} className="nav-button">Show me 404</button>
             </div>
-            {state.length > 0 ? null : <span className="top-space">Add the things you need to do today...</span>}
-            <TodoGroup/>
-            <TodoGenerator/>
-            <button onClick={handleNavToCounter} className="nav-button">Navigate to Counter Page</button>
-            <br/>
-            <button onClick={handleNavToDoneList} className="nav-button">Navigate to Done List Page</button>
-            <br/>
-            <button onClick={handleNavToUnknown} className="nav-button">Show me 404</button>
+        }
         </div>
     );
 }
