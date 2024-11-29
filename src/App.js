@@ -18,8 +18,8 @@ function App() {
                 <Router>
                     <Routes>
                         <Route path='/' element={<TodoList/>}/>
-                        <Route path='/notfound' element={<NotFoundPage/>}/>
                         <Route path='/counter' element={<MultipleCounter/>}/>
+                        <Route path='*' element={<NotFoundPage/>}/>
                     </Routes>
                 </Router>
             </TodoContext.Provider>
