@@ -1,7 +1,4 @@
-import {useContext} from "react";
-import {TodoContext} from "../../App";
 import "./TodoListStyle.css"
-import {ACTION} from "../../context/todoReducer";
 
 const DoneItem = (props) => {
 

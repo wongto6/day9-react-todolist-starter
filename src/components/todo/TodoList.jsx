@@ -3,7 +3,7 @@ import TodoGenerator from "./TodoGenerator";
 import {useContext, useEffect, useState} from "react";
 import {TodoContext} from "../../App";
 import {useNavigate} from "react-router-dom";
-import {getTodoData, todoData} from "../api/todo";
+import {getTodoData} from "../api/todo";
 import {ACTION} from "../../context/todoReducer";
 
 const TodoList = () => {

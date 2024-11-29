@@ -1,5 +1,3 @@
-import TodoGroup from "./TodoGroup";
-import TodoGenerator from "./TodoGenerator";
 import {useContext} from "react";
 import {TodoContext} from "../../App";
 import {useNavigate} from "react-router-dom";
@@ -18,7 +16,7 @@ const DoneList = () => {
         navigate("/unknown")
     }
 
-    function handleNavToTodolist(){
+    function handleNavToTodolist() {
         navigate("/")
     }
 
