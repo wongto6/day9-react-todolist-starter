@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import {Navigate, useNavigate} from "react-router-dom";
 import MultipleCounter from "./components/counter/MultipleCounter";
 import NotFoundPage from "./components/NotFoundPage";
+import DoneList from "./components/todo/DoneList";
 
 export const TodoContext = createContext();
 
@@ -18,6 +19,7 @@ function App() {
                 <Router>
                     <Routes>
                         <Route path='/' element={<TodoList/>}/>
+                        <Route path='/done' element={<DoneList/>}/>
                         <Route path='/counter' element={<MultipleCounter/>}/>
                         <Route path='*' element={<NotFoundPage/>}/>
                     </Routes>

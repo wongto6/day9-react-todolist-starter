@@ -36,5 +36,8 @@
 }
 
 .nav-button{
+    background-color: lightpink;
+    border: 0px;
+    border-radius: 2px;
     margin-top: 10px;
 }

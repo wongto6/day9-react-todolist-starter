@@ -17,6 +17,10 @@ const TodoList = () => {
         navigate("/unknown")
     }
 
+    function handleNavToDoneList(){
+        navigate('done')
+    }
+
     return (
         <div>
             <div className="bottom-space">
@@ -26,6 +30,8 @@ const TodoList = () => {
             <TodoGroup/>
             <TodoGenerator/>
             <button onClick={handleNavToCounter} className="nav-button">Navigate to Counter Page</button>
+            <br/>
+            <button onClick={handleNavToDoneList} className="nav-button">Navigate to Done List Page</button>
             <br/>
             <button onClick={handleNavToUnknown} className="nav-button">Show me 404</button>
         </div>
