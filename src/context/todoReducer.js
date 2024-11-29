@@ -9,7 +9,8 @@ export const todoReducer = (state, action) => {
 
     switch (action.type) {
         case ACTION.ADD: {
-            return [...state, {id: Date.now(), text: action.payload, done: false}]
+            const currentStateLength = state.length + 1
+            return [...state, {id: currentStateLength.toString(), text: action.payload, done: false}]
         }
         case ACTION.UPDATE: {
             return state.map(item => {

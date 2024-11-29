@@ -11,7 +11,7 @@ const TodoItem = (props) => {
     function handleDone() {
 
         updateTodoData(props.item).then((todo)=>{
-            dispatch({type: ACTION.ADD, payload: todo.id})
+            dispatch({type: ACTION.UPDATE, payload: todo.id})
         }, [])
 
     }
