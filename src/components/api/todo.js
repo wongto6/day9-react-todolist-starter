@@ -24,3 +24,8 @@ export const updateTodoData = async (item) => {
     const response = await http.put("/todo/TodoItems/" + item.id, {id: item.id, text: item.text, done: !item.done})
     return response.data
 }
+
+export const editTodoData = async (item) => {
+    const response = await http.put("/todo/TodoItems/" + item.id, {id: item.id, text: item.text, done: item.done})
+    return response.data
+}
