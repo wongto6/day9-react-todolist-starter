@@ -8,7 +8,14 @@ const TodoGenerator = () => {
     const {dispatch} = useContext(TodoContext)
 
     function handleAdd() {
-        dispatch({type: "ADD", payload: input.trim()})
+
+        const trimmedInput = input.trim()
+
+        if (trimmedInput.length === 0) {
+            return
+        }
+
+        dispatch({type: "ADD", payload: trimmedInput})
     }
 
     function handleInputChange(event) {

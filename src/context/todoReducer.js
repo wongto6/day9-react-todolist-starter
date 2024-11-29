@@ -2,11 +2,6 @@ export const todoReducer = (state, action) => {
 
     switch (action.type) {
         case "ADD": {
-
-            if(action.payload.length === 0){
-                return state
-            }
-
             return [...state, {id: Date.now(), text: action.payload, done: false}]
         }
         case "UPDATE": {
