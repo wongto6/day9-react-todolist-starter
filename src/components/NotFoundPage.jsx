@@ -4,14 +4,12 @@ const NotFoundPage =()=>{
 
     const navigate = useNavigate()
 
-    function handleNavToTodolist(){
-        navigate("/")
-    }
-
     return (
         <div>
             <h1>404 Not Found</h1>
-            <button onClick={handleNavToTodolist} className="nav-button">Go back to Main page</button>
+            <button onClick={()=>{
+                navigate("/")
+            }} className="nav-button">Go back to Home page</button>
         </div>
     )
 }
