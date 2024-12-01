@@ -36,6 +36,7 @@ const TodoItem = (props) => {
     }
 
     function handleEdit() {
+        setEditInput(props.item.text)
         setShowModal(true)
     }
 
@@ -65,17 +66,15 @@ const TodoItem = (props) => {
     return (
         <div>
             <span>
-                {showModal ? <Modal title="Edit content" open={handleOpen} onOk={submitChange} onCancel={handleClose}>
+                {showModal ? <Modal mask={false} title="Edit content" open={handleOpen} onOk={submitChange} onCancel={handleClose}>
                     <input value={editInput} onChange={handleEditInput} className={"input-box"}/>
                 </Modal> : null
-
                 }
-
-
                 {updateLoading || deleteLoading ? <Spin indicator={<LoadingOutlined spin/>}/> : props.item.done ?
                     <input value={"It has be done"} contentEditable={false} onClick={handleDone} className={"done-item"}
                            readOnly={true}/> :
-                    <input placeholder={props.item.text} value={props.item.text} contentEditable={false} onClick={handleDone} className={"doing-item"}
+                    <input value={props.item.text} contentEditable={false}
+                           onClick={handleDone} className={"doing-item"}
                            readOnly={true}/>}
                 <button onClick={handleEdit} className={"edit-bt"}>Edit</button>
                 <button onClick={handleRemove}>X</button>
