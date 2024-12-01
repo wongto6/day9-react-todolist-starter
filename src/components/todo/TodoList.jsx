@@ -26,23 +26,11 @@ const TodoList = () => {
         )
     }, []);
 
-    function handleNavToCounter() {
-        navigate("/counter")
-    }
-
-    function handleNavToUnknown() {
-        navigate("/unknown")
-    }
-
-    function handleNavToDoneList() {
-        navigate('done')
-    }
-
-    function handlePageChange(page){
+    function handlePageChange(page) {
         setCurrentPage(page)
     }
 
-    const todoProgress = ((state.filter(item => item.done===true).length/ state.length) * 100).toPrecision(2)
+    const todoProgress = ((state.filter(item => item.done === true).length / state.length) * 100).toPrecision(2)
 
     return (
         <div>{
@@ -56,11 +44,15 @@ const TodoList = () => {
                 <TodoGenerator/>
                 <Pagination defaultCurrent={1} pageSize={pageSize} showTotal={false} total={state.length}
                             onChange={handlePageChange} className={"paging"}/>
-                <button onClick={handleNavToCounter} className="nav-button">Navigate to Counter Page</button>
                 <br/>
-                <button onClick={handleNavToDoneList} className="nav-button">Navigate to Done List Page</button>
+                <button onClick={()=>{
+                    navigate('/done')
+                }} className="nav-button">Navigate to Done List Page</button>
                 <br/>
-                <button onClick={handleNavToUnknown} className="nav-button">Show me 404</button>
+                <button onClick={() => {
+                    navigate("/unknown")
+                }} className="nav-button">Show me 404
+                </button>
             </div>
         }
         </div>

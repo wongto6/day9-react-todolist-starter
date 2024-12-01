@@ -4,7 +4,6 @@ import TodoList from "./components/todo/TodoList";
 import {initialState, todoReducer} from "./context/todoReducer";
 import {BrowserRouter as Router, Link, Route, Routes} from "react-router-dom";
 import {Navigate, useNavigate} from "react-router-dom";
-import MultipleCounter from "./components/counter/MultipleCounter";
 import NotFoundPage from "./components/NotFoundPage";
 import DoneList from "./components/todo/DoneList";
 import HomePage from "./components/HomePage";
@@ -23,13 +22,13 @@ function App() {
                         <Link to={'/'}>Home</Link> |
                         <Link to={'/todolist'}>Todo-List</Link> |
                         <Link to={'/done'}>Done-List</Link> |
+                        <Link to={'/help'}>Help Page</Link> |
                     </nav>
                     <Routes>
                         <Route path='/' element={<HomePage/>}/>
                         <Route path='/todolist' element={<TodoList/>}/>
                         <Route path='/help' element={<HelpPage/>}/>
                         <Route path='/done' element={<DoneList/>}/>
-                        <Route path='/counter' element={<MultipleCounter/>}/>
                         <Route path='*' element={<NotFoundPage/>}/>
                     </Routes>
                 </Router>
