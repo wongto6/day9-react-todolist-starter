@@ -1,5 +1,6 @@
 package org.oocl.todo_backend.controllers;
 
+import jakarta.websocket.server.PathParam;
 import org.oocl.todo_backend.model.Todo;
 import org.oocl.todo_backend.service.TodoService;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +25,11 @@ public class TodoControllers {
     @PostMapping
     public Todo createTodo(@RequestBody Todo todo) {
         return todoService.create(todo);
+    }
+
+    @PutMapping
+    public Todo updateTodo(@RequestBody Todo todo) {
+        return todoService.update(todo);
     }
 
 }
