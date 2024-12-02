@@ -2,9 +2,7 @@ package org.oocl.todo_backend.controllers;
 
 import org.oocl.todo_backend.model.Todo;
 import org.oocl.todo_backend.service.TodoService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,9 +16,14 @@ public class TodoControllers {
         this.todoService = todoService;
     }
 
-    @GetMapping(path = "/")
+    @GetMapping
     public List<Todo> getAllTodoControllers() {
         return todoService.getAllTodos();
+    }
+
+    @PostMapping
+    public Todo createTodo(@RequestBody Todo todo) {
+        return todoService.create(todo);
     }
 
 }
