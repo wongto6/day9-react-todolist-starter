@@ -2,7 +2,7 @@ import {useContext, useState} from "react";
 import {TodoContext} from "../../App";
 import "./TodoListStyle.css"
 import {ACTION} from "../../context/todoReducer";
-import {deleteTodoData, editTodoData, updateTodoData} from "../api/todo";
+import {deleteTodoData, updateTodoData} from "../api/todo";
 import {LoadingOutlined} from "@ant-design/icons";
 import {Modal, Spin} from "antd";
 
@@ -46,7 +46,7 @@ const TodoItem = (props) => {
 
     function submitChange() {
 
-        editTodoData({id: props.id, text: editInput, done: props.done}).then((todo) => {
+        updateTodoData({id: props.id, text: editInput, done: props.done}).then((todo) => {
             setUpdateLoading(true)
             dispatch({type: ACTION.EDIT, payload: todo})
         }, []).finally(() => {
