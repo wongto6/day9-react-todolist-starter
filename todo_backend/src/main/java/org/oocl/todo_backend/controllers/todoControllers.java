@@ -12,9 +12,14 @@ import java.util.List;
 @RequestMapping("/todos")
 public class todoControllers {
 
-    @GetMapping
+    @GetMapping(path = "/")
     public List<Todo> getAllTodoControllers() {
         return null;
+    }
+
+    @GetMapping(path = "/hello")
+    public String getHelloWorld() {
+        return "Hello World";
     }
 
 }
