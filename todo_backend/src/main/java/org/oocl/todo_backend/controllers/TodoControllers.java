@@ -3,6 +3,7 @@ package org.oocl.todo_backend.controllers;
 import jakarta.websocket.server.PathParam;
 import org.oocl.todo_backend.model.Todo;
 import org.oocl.todo_backend.service.TodoService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class TodoControllers {
     }
 
     @PostMapping
+    @ResponseStatus(code = HttpStatus.CREATED)
     public Todo createTodo(@RequestBody Todo todo) {
         return todoService.create(todo);
     }
@@ -30,6 +32,12 @@ public class TodoControllers {
     @PutMapping
     public Todo updateTodo(@RequestBody Todo todo) {
         return todoService.update(todo);
+    }
+
+    @DeleteMapping(params = {"id"})
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateTodo(@RequestParam Integer id) {
+        todoService.delete(id);
     }
 
 }
